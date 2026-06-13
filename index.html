@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriKinex - Biyometrik Limitlerini Yeniden Çiz</title>
+    <meta name="description" content="NutriKinex, akıllı saat nabız takibi ve kan tahlili verileriyle çalışan, Gemini Nano destekli akıllı spor ve beslenme asistanıdır.">
+    
+    <!-- Open Graph (Sosyal Medya Etiketleri) -->
+    <meta property="og:title" content="NutriKinex - AI Biyometrik Spor ve Beslenme Koçu">
+    <meta property="og:description" content="Canlı antrenman bükme motoru ve kan tahlili duyarlı diyet planlaması yapan yapay zeka koçu cebinizde.">
+    <meta property="og:image" content="./assets/mockup.png">
+    <meta property="og:url" content="https://nutrikinex.com">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts (Outfit Display + Plus Jakarta Sans Body + Space Grotesk UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <!-- Gürültü Katmanı & Biyolüminesans Arka Plan Küreleri -->
+    <div class="noise-overlay"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Akışkan Yüzen Ada Navigasyon (Fluid Island Navbar) -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <span class="logo-accent">NUTRI</span>KINEX
+            </a>
+            <div class="nav-links">
+                <a href="#features" class="nav-link">Özellikler</a>
+                <a href="#simulator" class="nav-link">Biyometrik Analiz</a>
+                <a href="#faq" class="nav-link">SSS</a>
+            </div>
+            <a href="#download" class="btn-pill nav-btn">
+                <span class="btn-pill-text">İndir</span>
+                <span class="btn-pill-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+            </a>
+            <button class="mobile-menu-toggle" id="menuToggle" aria-label="Menüyü Aç">
+                <span class="hamburger-line line-top"></span>
+                <span class="hamburger-line line-bottom"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobil Navigasyon Menüsü (Tam Ekran Cam Kaplama) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-links">
+            <a href="#features" class="mobile-link">Özellikler</a>
+            <a href="#simulator" class="mobile-link">Biyometrik Analiz</a>
+            <a href="#faq" class="mobile-link">SSS</a>
+        </div>
+        <a href="#download" class="btn-pill mobile-btn">
+            <span class="btn-pill-text">Uygulamayı İndir</span>
+            <span class="btn-pill-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </a>
+    </div>
+
+    <!-- Kahraman (Hero) Alanı -->
+    <header class="hero-section">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge-new">
+                    <svg class="icon icon-sparkles" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="m5 3 1 2.5L8.5 6 6 7 5 9.5 4 7 1.5 6 4 5.5z"/><path d="M19 17l1 2.5 2.5.5-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/></svg>
+                    <span>ÇEVRİMDIŞI YAPAY ZEKA DESTEKLİ</span>
+                </div>
+                <h1 class="hero-title">
+                    Biyometrik Limitlerini <br>
+                    <span class="gradient-text">Yeniden Tasarla</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Canlı antrenman bükme motoru, kan tahlili duyarlı akıllı diyet planlaması ve internet gerektirmeyen cihaz üstü yapay zeka koçuyla hedeflerine ulaş.
+                </p>
+                <div class="hero-actions" id="download">
+                    <a href="#" class="btn-pill">
+                        <span class="btn-pill-text">Google Play'den İndir</span>
+                        <span class="btn-pill-icon">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                        </span>
+                    </a>
+                    <a href="#" class="btn-pill btn-secondary">
+                        <span class="btn-pill-text">App Store'dan İndir</span>
+                        <span class="btn-pill-icon">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3.5 3.5 0 0 0-3 3.5c0 2 1.5 3.5 3 3.5s3-1.5 3-3.5A3.5 3.5 0 0 0 12 2zm-5.5 14c0-2.5 1.5-4.5 4-4.5s4 2 4 4.5S13 21 10.5 21 6.5 18.5 6.5 16z"/><path d="M12 9v3"/></svg>
+                        </span>
+                    </a>
+                </div>
+                
+                <!-- Hero Trust Badge -->
+                <div class="hero-trust-badge">
+                    <div class="avatar-group">
+                        <svg class="trust-avatar" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="grad-f1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#0D9488" />
+                                    <stop offset="100%" stop-color="#22D3EE" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="16" cy="16" r="16" fill="url(#grad-f1)" />
+                            <path d="M16 8a5 5 0 0 0-5 5c0 2.5 1.5 4 3 4.5v2c-3.5 1-6 3-6 5.5v1h16v-1c0-2.5-2.5-4.5-6-5.5v-2c1.5-.5 3-2 3-4.5a5 5 0 0 0-5-5Z" fill="#FAFBFD" opacity="0.9" />
+                            <path d="M11 11.5h10v1H11z" fill="#C5A880" />
+                        </svg>
+                        <svg class="trust-avatar" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="grad-m1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#3B82F6" />
+                                    <stop offset="100%" stop-color="#60A5FA" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="16" cy="16" r="16" fill="url(#grad-m1)" />
+                            <path d="M16 8a4.5 4.5 0 0 0-4.5 4.5c0 2 1.2 3.5 2.5 4v2.5c-3 1-5 2.5-5 4.5v1h14v-1c0-2-2-3.5-5-4.5v-2.5c1.3-.5 2.5-2 2.5-4A4.5 4.5 0 0 0 16 8Z" fill="#FAFBFD" opacity="0.9" />
+                            <path d="M11.5 10.5h9v1.5h-9z" fill="#0D9488" />
+                        </svg>
+                        <svg class="trust-avatar" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="grad-f2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#C5A880" />
+                                    <stop offset="100%" stop-color="#EAB308" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="16" cy="16" r="16" fill="url(#grad-f2)" />
+                            <path d="M16 8a4.5 4.5 0 0 0-4.5 4.5c0 2 1.2 3.5 2.5 4v2.5c-3 1-5 2.5-5 4.5v1h14v-1c0-2-2-3.5-5-4.5v-2.5c1.3-.5 2.5-2 2.5-4A4.5 4.5 0 0 0 16 8Z" fill="#FAFBFD" opacity="0.9" />
+                            <path d="M11 12.5a5 5 0 0 1 10 0v1h-1v-1a4 4 0 0 0-8 0v1h-1v-1Z" fill="#030304" />
+                            <rect x="10.5" y="12.5" width="2" height="3" rx="1" fill="#030304" />
+                            <rect x="19.5" y="12.5" width="2" height="3" rx="1" fill="#030304" />
+                        </svg>
+                    </div>
+                    <div class="trust-text">
+                        <div class="stars-mini">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C5A880" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C5A880" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C5A880" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C5A880" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C5A880" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <p><strong>10,000+</strong> Aktif Sporcu Biyometrik Limitlerini Yeniden Çizdi</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <!-- Double-Bezel Mockup Container -->
+                <div class="mockup-outer" data-tilt data-tilt-max="6" data-tilt-speed="1000" data-tilt-glare data-tilt-max-glare="0.1">
+                    <div class="mockup-inner">
+                        <img src="./assets/mockup.png" alt="NutriKinex Mobil Uygulama Ekranı" class="app-mockup">
+                        
+                        <div class="floating-card float-card-1">
+                            <svg class="card-icon icon-blue" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l1.5-3.5L13 15l1.5-3.5h4.28"/></svg>
+                            <div>
+                                <p class="card-label">Canlı Nabız</p>
+                                <p class="card-val" id="mock-hr">138 bpm</p>
+                            </div>
+                        </div>
+                        <div class="floating-card float-card-2">
+                            <svg class="card-icon icon-turquoise" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                            <div>
+                                <p class="card-label">Hedef Diyet</p>
+                                <p class="card-val">-500 kcal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Özellikler (Bento Grid) Alanı -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="eyebrow-tag">Kabiliyetler</span>
+                <h2 class="section-title">Neden NutriKinex?</h2>
+                <p class="section-subtitle">Sıradan spor uygulamalarından farklı olarak, tamamen sizin biyolojinize entegre çalışan akıllı algoritmalar.</p>
+            </div>
+            <div class="features-grid">
+                
+                <!-- Bento Kart 1: Cihaz Üstü Gemini Nano Chat Console -->
+                <div class="card-outer feature-card bento-chat-card" data-tilt data-tilt-max="3" data-tilt-speed="1000">
+                    <div class="card-inner">
+                        <div class="bento-header">
+                            <div class="feature-icon-wrapper wrapper-turquoise">
+                                <svg class="feature-icon icon-turquoise" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-4.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-4.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+                            </div>
+                            <div class="badge-terminal">GEMINI NANO // OFFLINE_NPU</div>
+                        </div>
+                        <h3 class="feature-card-title">Cihaz Üstü Yapay Zeka Koçu</h3>
+                        <p class="feature-card-desc">Gelişim verileriniz Supabase bulut veritabanında güvenle yedeklenip senkronize edilirken, yapay zeka analizleriniz telefonunuzun kendi işlemcisinde (NPU) 0ms gecikmeyle çalışır.</p>
+                        
+                        <!-- Console Emulator -->
+                        <div class="terminal-emulator">
+                            <div class="terminal-header">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <div class="terminal-body" id="terminal-chat">
+                                <div class="chat-row prompt"><span class="terminal-user">user:</span> <span class="typed-text"></span><span class="cursor">|</span></div>
+                                <div class="chat-row reply"><span class="terminal-ai">nano:</span> <span class="reply-text"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bento Kart 2: Canlı Workout Bending -->
+                <div class="card-outer feature-card bento-workout-card" data-tilt data-tilt-max="4" data-tilt-speed="1000">
+                    <div class="card-inner">
+                        <div class="feature-icon-wrapper wrapper-blue">
+                            <svg class="feature-icon icon-blue" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        </div>
+                        <h3 class="feature-card-title">Canlı Workout Bending</h3>
+                        <p class="feature-card-desc">Akıllı saat verilerini canlı okuruz. Nabzınız alt zonun altındaysa antrenmanı otomatik uzatır, aşırı yorgunlukta ise güvenle bitiririz.</p>
+                        
+                        <!-- Metric Indicator List -->
+                        <div class="metrics-container">
+                            <div class="metric-row active-metric">
+                                <div class="metric-info">
+                                    <span>Nabız Zonu (Aerobik)</span>
+                                    <span class="metric-val" id="bento-hr">142 bpm</span>
+                                </div>
+                                <div class="progress-bar-outer"><div class="progress-bar-inner primary-gradient" style="width: 72%;"></div></div>
+                            </div>
+                            <div class="metric-row">
+                                <div class="metric-info">
+                                    <span>Laktat Birikimi</span>
+                                    <span class="metric-val">3.8 mmol/L</span>
+                                </div>
+                                <div class="progress-bar-outer"><div class="progress-bar-inner secondary-gradient" style="width: 48%;"></div></div>
+                            </div>
+                            <div class="metric-row">
+                                <div class="metric-info">
+                                    <span>Glikojen Deposu</span>
+                                    <span class="metric-val" id="bento-glycogen">%62</span>
+                                </div>
+                                <div class="progress-bar-outer"><div class="progress-bar-inner warn-gradient" style="width: 62%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bento Kart 3: Biyobelirteç Duyarlı Diyet -->
+                <div class="card-outer feature-card bento-diet-card" data-tilt data-tilt-max="4" data-tilt-speed="1000">
+                    <div class="card-inner">
+                        <div class="feature-icon-wrapper wrapper-green">
+                            <svg class="feature-icon icon-green" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.09 3 12.25c0 2.22 1.8 4.05 4 4.05Z"/><path d="M17 18.5c1.37 0 2.5-1.14 2.5-2.53 0-.72-.35-1.41-1.07-2s-1.42-1.43-1.6-2.34c-.18.91-.71 1.77-1.43 2.34s-1.07 1.28-1.07 2c0 1.39 1.13 2.53 2.5 2.53Z"/></svg>
+                        </div>
+                        <h3 class="feature-card-title">Biyobelirteç Duyarlı Diyet</h3>
+                        <p class="feature-card-desc">Kan tahlilinizi yükleyin; kortizol, glikoz veya vitamin dalgalanmalarına göre beslenme makrolarınız ve dinlenme süreleriniz otomatik güncellensin.</p>
+                        
+                        <!-- Biomarker Adjuster UI -->
+                        <div class="biomarker-adjuster">
+                            <div class="biomarker-box">
+                                <div class="biomarker-label">Kortizol (Stres)</div>
+                                <div class="biomarker-state state-high">+18% Yüksek</div>
+                            </div>
+                            <div class="adjust-arrow">
+                                <svg class="adjust-arrow-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 17 5-5-5-5"/><path d="m13 17 5-5-5-5"/></svg>
+                            </div>
+                            <div class="biomarker-box">
+                                <div class="biomarker-label">Makro Dengeleyici</div>
+                                <div class="biomarker-state state-action">+10% Karbo</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bento Kart 4: Akıllı Saat Entegrasyonu -->
+                <div class="card-outer feature-card bento-watch-card" data-tilt data-tilt-max="5" data-tilt-speed="1000">
+                    <div class="card-inner">
+                        <div class="feature-icon-wrapper wrapper-accent">
+                            <svg class="feature-icon icon-accent" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="3"/><path d="M9 6V2h6v4"/><path d="M9 18v4h6v-4"/></svg>
+                        </div>
+                        <h3 class="feature-card-title">Saat Entegrasyonu</h3>
+                        <p class="feature-card-desc">Apple Health (Apple Watch) ve Google Health Connect (WearOS, Wearables) altyapısı ile tam uyum.</p>
+                        
+                        <!-- Watch Connector Mock -->
+                        <div class="watch-sync-ui">
+                            <div class="sync-node watch-node">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="3"/><path d="M9 6V2h6v4"/><path d="M9 18v4h6v-4"/></svg>
+                            </div>
+                            <div class="sync-pulse-line">
+                                <div class="pulse-dot"></div>
+                            </div>
+                            <div class="sync-node app-node">NPU</div>
+                            <div class="sync-status">
+                                <span class="status-pulse-dot"></span>
+                                <span class="status-text">0ms Senkronizasyon</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bento Kart 5: Kullanıcı Memnuniyeti & Güven (Testimonial Card) -->
+                <div class="card-outer feature-card bento-satisfaction-card" data-tilt data-tilt-max="4" data-tilt-speed="1000">
+                    <div class="card-inner">
+                        <div class="satisfaction-header">
+                            <svg class="satisfaction-avatar" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="grad-sat" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#0D9488" />
+                                        <stop offset="50%" stop-color="#C5A880" />
+                                        <stop offset="100%" stop-color="#10B981" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="32" cy="32" r="32" fill="url(#grad-sat)" />
+                                <path d="M32 14a9 9 0 0 0-9 9c0 4.5 2.7 7.2 5.4 8.1v4.5C22.6 37.4 18 41 18 45.5v2.7h28v-2.7c0-4.5-4.6-8.1-10.4-9.9v-4.5c2.7-.9 5.4-3.6 5.4-8.1a9 9 0 0 0-9-9Z" fill="#FAFBFD" opacity="0.9" />
+                                <path d="M23 20h18v3H23z" fill="#030304" />
+                                <path d="M25 42.5h14" stroke="#22D3EE" stroke-width="2.5" stroke-linecap="round" opacity="0.85" />
+                            </svg>
+                            <div class="satisfaction-meta">
+                                <h4 class="sat-user-name">Aylin K.</h4>
+                                <p class="sat-user-title">Düzenli Kullanıcı</p>
+                            </div>
+                        </div>
+                        <div class="star-rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#C5A880" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#C5A880" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#C5A880" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#C5A880" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#C5A880" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <p class="satisfaction-quote">"NutriKinex'ten çok memnunum, antrenmanlarımı harika hale getiriyor. Herkese tavsiye ederim."</p>
+                    </div>
+                </div>
+
+                <!-- Bento Kart 6: Hücresel Toparlanma Akışı (Marquee) -->
+                <div class="card-outer feature-card bento-recovery-card bento-wide-card" data-tilt data-tilt-max="3" data-tilt-speed="1000">
+                    <div class="card-inner">
+                        <div class="feature-icon-wrapper wrapper-accent">
+                            <svg class="feature-icon icon-accent" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                        </div>
+                        <h3 class="feature-card-title">Hücresel Toparlanma</h3>
+                        <p class="feature-card-desc">Uykunuz, HRV dalgalanmalarınız ve toparlanma hızınız anlık izlenerek her güne özel fizyolojik kapasiteniz hesaplanır.</p>
+                        
+                        <!-- Marquee Stream -->
+                        <div class="recovery-marquee-container">
+                            <div class="recovery-marquee-track">
+                                <div class="marquee-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg> <span>REM Uykusu: 2s 14dk</span></div>
+                                <div class="marquee-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> <span>HRV Ortalaması: 74 ms</span></div>
+                                <div class="marquee-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <span>Toparlanma: %92</span></div>
+                                <div class="marquee-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2"/><path d="M19 6h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2"/><path d="M11 6.66 9 12h4l-2 5.33"/><line x1="5" y1="10" x2="5" y2="14"/><line x1="19" y1="10" x2="19" y2="14"/></svg> <span>Enerji: %85</span></div>
+                                <!-- Duplicate for Infinite Scroll -->
+                                <div class="marquee-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg> <span>REM Uykusu: 2s 14dk</span></div>
+                                <div class="marquee-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> <span>HRV Ortalaması: 74 ms</span></div>
+                                <div class="marquee-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <span>Toparlanma: %92</span></div>
+                                <div class="marquee-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2"/><path d="M19 6h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2"/><path d="M11 6.66 9 12h4l-2 5.33"/><line x1="5" y1="10" x2="5" y2="14"/><line x1="19" y1="10" x2="19" y2="14"/></svg> <span>Enerji: %85</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Hassasiyet Simülatörü (Interactive Simulator) -->
+    <section class="simulator-section" id="simulator">
+        <div class="container">
+            <!-- Double-Bezel Simulator Box -->
+            <div class="simulator-outer">
+                <div class="simulator-box">
+                    <div class="simulator-content">
+                        <span class="eyebrow-tag">Dinamik Simülasyon</span>
+                        <h2 class="section-title text-left">Biyometrik Hassasiyet</h2>
+                        <p class="section-subtitle text-left">Gündelik durumunuza göre diyetinizi veya antrenmanınızı tek tıkla esnetin veya sıkılaştırın. Sonuçları canlı izleyin.</p>
+                        
+                        <!-- Hedef Seçimi -->
+                        <div class="goal-selector-group">
+                            <span class="selector-label">Birincil Hedefiniz:</span>
+                            <div class="goal-buttons">
+                                <button class="goal-btn active" data-goal="loss">Yağ Yakımı</button>
+                                <button class="goal-btn" data-goal="gain">Kas Kütlesi</button>
+                            </div>
+                        </div>
+
+                        <!-- Zorluk / Seviye Seçimi -->
+                        <div class="strictness-controls">
+                            <button class="strictness-btn" data-strictness="flexible">
+                                <svg class="icon icon-green" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                                <span>Esnek</span>
+                            </button>
+                            <button class="strictness-btn active" data-strictness="normal">
+                                <svg class="icon icon-turquoise" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="2" y1="14" x2="6" y2="14"/><line x1="10" y1="8" x2="14" y2="8"/><line x1="18" y1="16" x2="22" y2="16"/></svg>
+                                <span>Dengeli</span>
+                            </button>
+                            <button class="strictness-btn" data-strictness="strict">
+                                <svg class="icon icon-red" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                                <span>Sıkı</span>
+                            </button>
+                        </div>
+
+                        <p class="simulator-desc" id="strictness-desc">
+                            Bilimsel sürelere ve standart yoğunluğa sadık kalınır. Hedef kalori dengeli uygulanır.
+                        </p>
+                    </div>
+
+                    <!-- Simülasyon Sonuç Paneli (Holografik Radar Grafik Ekranı) -->
+                    <div class="simulator-display">
+                        <h3 class="display-title">Biyometrik Denge Simülasyonu</h3>
+                        
+                        <div class="chart-container">
+                            <canvas id="biomarkerChart"></canvas>
+                        </div>
+
+                        <div class="display-footer">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
+                            <span>Biyobelirteç dalgalanmaları ve toparlanma oranları 70kg ağırlığındaki bir bireyin biyolojik profiline göredir.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sıkça Sorulan Sorular (FAQ) -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="eyebrow-tag">Destek</span>
+                <h2 class="section-title">Sıkça Sorulan Sorular</h2>
+                <p class="section-subtitle">NutriKinex hakkında en çok merak edilen bilimsel ve teknik soruların yanıtları.</p>
+            </div>
+            
+            <div class="faq-accordion-wrapper">
+                
+                <!-- Soru 1 -->
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span>Cihaz içi yapay zeka internet olmadan nasıl çalışıyor?</span>
+                        <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-content">
+                        <p>
+                            Uygulamamız, Google'ın en yeni mobil yapay zeka modeli olan **Gemini Nano**'yu kullanır. Bu model, telefonunuzun kendi yapay zeka işlem biriminde (NPU) çalışır. Bu sayede sorularınıza sunucu gecikmesi olmadan, internetiniz kapalıyken dahi anında cevap alırsınız.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Soru 2 -->
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span>Akıllı saat entegrasyonu hangi modelleri destekliyor?</span>
+                        <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-content">
+                        <p>
+                            NutriKinex, iOS üzerinde Apple Health (Apple Watch), Android üzerinde ise Google Health Connect (WearOS, Samsung Galaxy Watch, Fitbit vb.) entegrasyonlarını destekler. Nabız verileriniz Bluetooth üzerinden canlı olarak okunarak egzersiz bükme motoruna aktarılır.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Soru 3 -->
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span>Kan tahlili sonuçlarımı yüklemek güvenli mi?</span>
+                        <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-content">
+                        <p>
+                            Kesinlikle. Biyobelirteçleriniz (kortizol, vitamin değerleri vb.) platformumuzun güvenli ve şifreli bulut veritabanında saklanır ve yalnızca size özel analizlerin yapılması amacıyla sistem tarafından işlenir. Verileriniz reklam verenler veya veri pazarlamacıları gibi üçüncü şahıslarla asla paylaşılmaz; yalnızca hizmetin sürdürülebilmesi ve olası bir devir veya uygulama satışı durumunda hizmetin kesintisiz devam etmesi amacıyla devralan tarafa güvenli şekilde aktarılabilir. Sistemimiz tıbbi teşhis koymaz; yalnızca egzersiz ve beslenme yoğunluğunuzu ayarlamak için tavsiye niteliğinde çalışır.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Yasal Uyarı & Footer -->
+    <footer class="footer">
+        <div class="container">
+            
+            <!-- Yasal Uyarı Banner -->
+            <div class="card-outer disclaimer-card">
+                <div class="card-inner disclaimer-banner">
+                    <svg class="disclaimer-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <div class="disclaimer-text">
+                        <strong>YAPAY ZEKA VE YASAL UYARI:</strong> Uygulama içerisindeki veya web sitemizdeki yapay zeka tarafından sunulan tüm analizler, tahminler ve öneriler genel bilgilendirme/tavsiye niteliğindedir. Kesinlikle tıbbi teşhis, tedavi veya doktor tavsiyesi yerine geçmez. Kronik rahatsızlığı veya sakatlığı olan bireylerin uygulamaya başlamadan önce hekimlerine danışması gerekmektedir. Yapay zekalar hata yapabilir.
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-brand">
+                    <span class="logo-accent">NUTRI</span>KINEX
+                    <p class="copyright">© 2026 NutriKinex. Tüm hakları saklıdır.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="./privacy.html" class="footer-link">Gizlilik Politikası</a>
+                    <a href="./terms.html" class="footer-link">Kullanım Koşulları</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Popüler Web Tasarım Kütüphaneleri (Skills) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    
+    <script src="./app.js"></script>
+</body>
+</html>

@@ -359,73 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     }
 
-    // Gemini Nano Typewriter Simülasyonu
-    const chatSequence = [
-        {
-            user: "Nabzım 160 bpm iken antrenman süresini kısaltmalı mıyım?",
-            nano: "Laktat birikimi gözlemleniyor. Sonraki seti 45 sn dinlenme ile sınırlayın."
-        },
-        {
-            user: "Kan tahlilimdeki yüksek kortizol için akşam makrosu?",
-            nano: "Akşam yemeğine 30g yavaş salınımlı kompleks karbonhidrat ekleyin."
-        },
-        {
-            user: "Sıkı kas kütlesi modunda glikojen depolarını koruma?",
-            nano: "Egzersiz öncesi 0.8g/kg protein + 1.2g/kg hızlı emilen karbonhidrat tüketin."
-        }
-    ];
 
-    const typedText = document.querySelector('.terminal-emulator .typed-text');
-    const replyText = document.querySelector('.terminal-emulator .reply-text');
-    let sequenceIndex = 0;
-
-    function runTypewriter() {
-        if (!typedText || !replyText) return;
-        
-        typedText.textContent = "";
-        replyText.textContent = "";
-        replyText.style.opacity = 0;
-        
-        const currentData = chatSequence[sequenceIndex];
-        let charIndex = 0;
-        
-        function typeUser() {
-            if (charIndex < currentData.user.length) {
-                typedText.textContent += currentData.user.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeUser, 30 + Math.random() * 20);
-            } else {
-                setTimeout(() => {
-                    replyText.style.opacity = 1;
-                    replyText.textContent = "Düşünülüyor...";
-                    setTimeout(typeAi, 800);
-                }, 400);
-            }
-        }
-        
-        let replyCharIndex = 0;
-        function typeAi() {
-            replyText.textContent = "";
-            function typeAiLoop() {
-                if (replyCharIndex < currentData.nano.length) {
-                    replyText.textContent += currentData.nano.charAt(replyCharIndex);
-                    replyCharIndex++;
-                    setTimeout(typeAiLoop, 20 + Math.random() * 15);
-                } else {
-                    setTimeout(() => {
-                        sequenceIndex = (sequenceIndex + 1) % chatSequence.length;
-                        runTypewriter();
-                    }, 4000);
-                }
-            }
-            typeAiLoop();
-        }
-        
-        typeUser();
-    }
-
-    // Typewriter döngüsünü başlat
-    runTypewriter();
 
     /* ─── 7. GSAP AÇILIŞ VE SCROLL ANİMASYONLARI ──────────── */
     if (typeof gsap !== 'undefined') {

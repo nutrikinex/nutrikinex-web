@@ -40,265 +40,85 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ─── 3. HOLOGRAFİK BİYOBELİRTEÇ RADAR SİMÜLASYONU ───────── */
-    const ctx = document.getElementById('biomarkerChart');
-    let biomarkerChart = null;
+    /* ─── 3. BİYOMETRİK BMR & SU HESAPLAYICI SİMÜLATÖRÜ ───────── */
+    const genderMaleBtn = document.getElementById('calc-gender-male');
+    const genderFemaleBtn = document.getElementById('calc-gender-female');
+    const ageInput = document.getElementById('calc-age');
+    const heightInput = document.getElementById('calc-height');
+    const weightInput = document.getElementById('calc-weight');
+    
+    const ageVal = document.getElementById('calc-age-val');
+    const heightVal = document.getElementById('calc-height-val');
+    const weightVal = document.getElementById('calc-weight-val');
+    
+    const resultBmr = document.getElementById('result-bmr');
+    const resultWater = document.getElementById('result-water');
+    const resultStatus = document.getElementById('result-status');
 
-    function drawCanvasRadar(canvasEl, dataValues, labels) {
-        const dCtx = canvasEl.getContext('2d');
-        if (!dCtx) return;
-        
-        // Handle High-DPI screens
-        const dpr = window.devicePixelRatio || 1;
-        const rect = canvasEl.getBoundingClientRect();
-        const w = rect.width || 320;
-        const h = rect.height || 320;
-        
-        canvasEl.width = w * dpr;
-        canvasEl.height = h * dpr;
-        canvasEl.style.width = w + 'px';
-        canvasEl.style.height = h + 'px';
-        
-        dCtx.scale(dpr, dpr);
-        
-        const cx = w / 2;
-        const cy = h / 2;
-        const maxRadius = Math.min(w, h) * 0.35;
-        const sides = 5;
-        
-        dCtx.clearRect(0, 0, w, h);
-        
-        // Concentric webs
-        const levels = 5;
-        dCtx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-        dCtx.lineWidth = 1;
-        for (let j = 1; j <= levels; j++) {
-            const r = (maxRadius / levels) * j;
-            dCtx.beginPath();
-            for (let i = 0; i < sides; i++) {
-                const angle = (i * 2 * Math.PI / sides) - Math.PI / 2;
-                const x = cx + r * Math.cos(angle);
-                const y = cy + r * Math.sin(angle);
-                if (i === 0) dCtx.moveTo(x, y);
-                else dCtx.lineTo(x, y);
-            }
-            dCtx.closePath();
-            dCtx.stroke();
-        }
-        
-        // Angle lines and Labels
-        dCtx.beginPath();
-        for (let i = 0; i < sides; i++) {
-            const angle = (i * 2 * Math.PI / sides) - Math.PI / 2;
-            const x = cx + maxRadius * Math.cos(angle);
-            const y = cy + maxRadius * Math.sin(angle);
-            dCtx.moveTo(cx, cy);
-            dCtx.lineTo(x, y);
+    let currentCalcGender = 'Erkek';
+
+    if (genderMaleBtn && genderFemaleBtn && ageInput && heightInput && weightInput) {
+        const calculateMetrics = () => {
+            const age = parseInt(ageInput.value);
+            const height = parseInt(heightInput.value);
+            const weight = parseInt(weightInput.value);
             
-            // Text Label
-            dCtx.fillStyle = '#94A3B8';
-            dCtx.font = '600 10px Space Grotesk';
-            const labelX = cx + (maxRadius + 20) * Math.cos(angle);
-            const labelY = cy + (maxRadius + 14) * Math.sin(angle);
-            dCtx.textAlign = Math.abs(Math.cos(angle)) < 0.1 ? 'center' : (Math.cos(angle) > 0 ? 'left' : 'right');
-            dCtx.textBaseline = 'middle';
-            dCtx.fillText(labels[i], labelX, labelY);
-        }
-        dCtx.stroke();
-        
-        // Data polygon
-        dCtx.beginPath();
-        dCtx.fillStyle = 'rgba(13, 148, 136, 0.18)';
-        dCtx.strokeStyle = '#0D9488';
-        dCtx.lineWidth = 2;
-        for (let i = 0; i < sides; i++) {
-            const val = dataValues[i];
-            const r = (val / 100) * maxRadius;
-            const angle = (i * 2 * Math.PI / sides) - Math.PI / 2;
-            const x = cx + r * Math.cos(angle);
-            const y = cy + r * Math.sin(angle);
-            if (i === 0) dCtx.moveTo(x, y);
-            else dCtx.lineTo(x, y);
-        }
-        dCtx.closePath();
-        dCtx.fill();
-        dCtx.stroke();
-        
-        // Data points (Gold)
-        for (let i = 0; i < sides; i++) {
-            const val = dataValues[i];
-            const r = (val / 100) * maxRadius;
-            const angle = (i * 2 * Math.PI / sides) - Math.PI / 2;
-            const x = cx + r * Math.cos(angle);
-            const y = cy + r * Math.sin(angle);
+            // Update UI labels
+            if (ageVal) ageVal.textContent = age;
+            if (heightVal) heightVal.textContent = height + ' cm';
+            if (weightVal) weightVal.textContent = weight + ' kg';
             
-            dCtx.fillStyle = '#C5A880';
-            dCtx.strokeStyle = '#0D9488';
-            dCtx.lineWidth = 1.5;
-            dCtx.beginPath();
-            dCtx.arc(x, y, 4.5, 0, 2 * Math.PI);
-            dCtx.fill();
-            dCtx.stroke();
-        }
-    }
-
-    if (ctx) {
-        if (typeof Chart !== 'undefined') {
-            biomarkerChart = new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: ['Kortizol (Stres)', 'Glikojen Deposu', 'Hücresel Yenilenme', 'Vitamin Kapasitesi', 'Metabolizma Hızı'],
-                    datasets: [{
-                        label: 'Biyometrik İndeks',
-                        data: [50, 45, 75, 65, 75],
-                        backgroundColor: 'rgba(13, 148, 136, 0.18)', // Frosted teal transparent
-                        borderColor: '#0D9488', // Rich Teal line
-                        borderWidth: 1.5,
-                        pointBackgroundColor: '#C5A880', // Champagne Gold points
-                        pointBorderColor: '#0D9488',
-                        pointHoverBackgroundColor: '#0D9488',
-                        pointHoverBorderColor: '#FAF8F5',
-                        pointRadius: 4.5,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            enabled: true,
-                            backgroundColor: '#0a0a0c',
-                            titleFont: {
-                                family: 'Space Grotesk',
-                                size: 12
-                            },
-                            bodyFont: {
-                                family: 'Plus Jakarta Sans',
-                                size: 11
-                            }
-                        }
-                    },
-                    scales: {
-                        r: {
-                            min: 0,
-                            max: 100,
-                            ticks: {
-                                display: false,
-                                stepSize: 20
-                            },
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.04)'
-                            },
-                            angleLines: {
-                                color: 'rgba(255, 255, 255, 0.04)'
-                            },
-                            pointLabels: {
-                                color: '#94A3B8',
-                                font: {
-                                    family: 'Space Grotesk',
-                                    size: 10,
-                                    weight: '600'
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        } else {
-            // High-fidelity local Canvas radar chart fallback for offline mode
-            biomarkerChart = {
-                data: {
-                    datasets: [{
-                        data: [50, 45, 75, 65, 75]
-                    }]
-                },
-                update: function() {
-                    drawCanvasRadar(ctx, this.data.datasets[0].data, ['Kortizol (Stres)', 'Glikojen Deposu', 'Hücresel Yenilenme', 'Vitamin Kapasitesi', 'Metabolizma Hızı']);
-                }
-            };
-            // Initial call to draw
-            biomarkerChart.update();
-            // Handle window resize for local canvas
-            window.addEventListener('resize', () => {
-                if (biomarkerChart && typeof biomarkerChart.update === 'function') {
-                    biomarkerChart.update();
-                }
-            });
-        }
-    }
-
-    /* ─── 4. SİMÜLATÖR KONTROLLERİ ───────────────────────── */
-    let currentGoal = 'loss'; // 'loss' (Yağ Yakımı) ya da 'gain' (Kas Kütlesi)
-    let currentStrictness = 'normal'; // 'flexible', 'normal', 'strict'
-
-    const goalBtns = document.querySelectorAll('.goal-btn');
-    const strictnessBtns = document.querySelectorAll('.strictness-btn');
-    const strictnessDesc = document.getElementById('strictness-desc');
-
-    const updateSimulator = () => {
-        let chartData = [50, 45, 75, 65, 75];
-        let descText = "";
-
-        if (currentGoal === 'loss') {
-            if (currentStrictness === 'flexible') {
-                chartData = [30, 60, 90, 75, 60];
-                descText = "Sosyal ortam uyumlu, yavaş ve dengeli gelişim. Kalori hedefleri %20 esnetilir, antrenman süreleri %20 kısaltılır. Biyolojik stres (kortizol) minimum düzeydedir.";
-            } else if (currentStrictness === 'normal') {
-                chartData = [50, 45, 75, 65, 75];
-                descText = "Bilimsel sürelere ve standart yoğunluğa sadık kalınır. Kalori hedefleri kararlı şekilde dengelenir. Biyobelirteçler optimize edilmiştir.";
-            } else if (currentStrictness === 'strict') {
-                chartData = [85, 30, 40, 50, 90];
-                descText = "Kilo verme hızını ve disiplini maksimuma çıkarır. Karbonhidrat ve yağ hedefleri %20 kısılır, antrenman hacmi %20 uzatılır. Stres hormonu artışı izlenmelidir.";
+            // BMR (Mifflin-St Jeor)
+            let bmr = (10 * weight) + (6.25 * height) - (5 * age);
+            if (currentCalcGender === 'Erkek') {
+                bmr += 5;
+            } else {
+                bmr -= 161;
             }
-        } else {
-            if (currentStrictness === 'flexible') {
-                chartData = [35, 70, 85, 80, 65];
-                descText = "Temiz kazanım (clean bulk) odaklı esnek kalori fazlası. Minimum yağ kazanımı hedeflenir. Antrenmanlar toparlanma önceliklidir.";
-            } else if (currentStrictness === 'normal') {
-                chartData = [45, 85, 75, 75, 80];
-                descText = "Kas gelişimi için kararlı kalori fazlası ve standart hipertrofi süreleri. Glikojen depoları dolu ve hücresel yenilenme dengelidir.";
-            } else if (currentStrictness === 'strict') {
-                chartData = [70, 95, 60, 70, 95];
-                descText = "Maksimum hacim ve güç artışı. Ağır direnç seansları ve sıkı planlanan yüksek karbonhidratlı kalori fazlası. Glikojen depoları maksimumdadır.";
+            
+            // Daily Water Requirement (33ml per kg)
+            const water = (weight * 0.033).toFixed(1);
+            
+            // Update outputs in UI
+            if (resultBmr) resultBmr.textContent = Math.round(bmr) + ' kcal';
+            if (resultWater) resultWater.textContent = water + ' Litre';
+            
+            if (resultStatus) {
+                if (bmr > 1900) {
+                    resultStatus.textContent = 'Yüksek Metabolik Hız';
+                    resultStatus.style.color = '#00FFCC';
+                } else if (bmr > 1400) {
+                    resultStatus.textContent = 'Dengeli Metabolizma';
+                    resultStatus.style.color = '#00E5FF';
+                } else {
+                    resultStatus.textContent = 'Ekonomik Metabolizma';
+                    resultStatus.style.color = '#FFA855';
+                }
             }
-        }
+        };
 
-        // Radar grafik güncelleme
-        if (biomarkerChart) {
-            biomarkerChart.data.datasets[0].data = chartData;
-            biomarkerChart.update();
-        }
-
-        // Açıklama metni güncelleme
-        if (strictnessDesc) {
-            strictnessDesc.textContent = descText;
-        }
-    };
-
-    // Buton olayları
-    goalBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            goalBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentGoal = btn.getAttribute('data-goal');
-            updateSimulator();
+        // Event Listeners
+        genderMaleBtn.addEventListener('click', () => {
+            genderMaleBtn.classList.add('active');
+            genderFemaleBtn.classList.remove('active');
+            currentCalcGender = 'Erkek';
+            calculateMetrics();
         });
-    });
 
-    strictnessBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            strictnessBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentStrictness = btn.getAttribute('data-strictness');
-            updateSimulator();
+        genderFemaleBtn.addEventListener('click', () => {
+            genderFemaleBtn.classList.add('active');
+            genderMaleBtn.classList.remove('active');
+            currentCalcGender = 'Kadın';
+            calculateMetrics();
         });
-    });
 
-    // Varsayılan çalıştırma
-    updateSimulator();
+        ageInput.addEventListener('input', calculateMetrics);
+        heightInput.addEventListener('input', calculateMetrics);
+        weightInput.addEventListener('input', calculateMetrics);
+
+        // Initial Calculation
+        calculateMetrics();
+    }
 
     /* ─── 5. FAQ AKORDEON (SSS) ───────────────────────────── */
     const faqItems = document.querySelectorAll('.faq-item');

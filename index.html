@@ -336,58 +336,86 @@
         </div>
     </section>
 
-    <!-- Hassasiyet Simülatörü (Interactive Simulator) -->
+    <!-- Biyometrik Hesaplayıcı (Biometric Calculator Simulator) -->
     <section class="simulator-section" id="simulator">
         <div class="container">
             <!-- Double-Bezel Simulator Box -->
             <div class="simulator-outer">
                 <div class="simulator-box">
                     <div class="simulator-content">
-                        <span class="eyebrow-tag">Dinamik Simülasyon</span>
-                        <h2 class="section-title text-left">Biyometrik Hassasiyet</h2>
-                        <p class="section-subtitle text-left">Gündelik durumunuza göre diyetinizi veya antrenmanınızı tek tıkla esnetin veya sıkılaştırın. Sonuçları canlı izleyin.</p>
+                        <span class="eyebrow-tag">Kişiselleştirme</span>
+                        <h2 class="section-title text-left">Biyometrik Hesaplayıcı</h2>
+                        <p class="section-subtitle text-left">Biyometrik verilerinizi girerek günlük metabolizma hızınızı (BMR) ve hidrasyon ihtiyacınızı bilimsel algoritmalarımızla anında hesaplayın.</p>
                         
-                        <!-- Hedef Seçimi -->
-                        <div class="goal-selector-group">
-                            <span class="selector-label">Birincil Hedefiniz:</span>
+                        <!-- Cinsiyet Seçimi -->
+                        <div class="calc-group">
+                            <span class="selector-label">Cinsiyet:</span>
                             <div class="goal-buttons">
-                                <button class="goal-btn active" data-goal="loss">Yağ Yakımı</button>
-                                <button class="goal-btn" data-goal="gain">Kas Kütlesi</button>
+                                <button class="goal-btn active" id="calc-gender-male">Erkek</button>
+                                <button class="goal-btn" id="calc-gender-female">Kadın</button>
                             </div>
                         </div>
 
-                        <!-- Zorluk / Seviye Seçimi -->
-                        <div class="strictness-controls">
-                            <button class="strictness-btn" data-strictness="flexible">
-                                <svg class="icon icon-green" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                                <span>Esnek</span>
-                            </button>
-                            <button class="strictness-btn active" data-strictness="normal">
-                                <svg class="icon icon-turquoise" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="2" y1="14" x2="6" y2="14"/><line x1="10" y1="8" x2="14" y2="8"/><line x1="18" y1="16" x2="22" y2="16"/></svg>
-                                <span>Dengeli</span>
-                            </button>
-                            <button class="strictness-btn" data-strictness="strict">
-                                <svg class="icon icon-red" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
-                                <span>Sıkı</span>
-                            </button>
+                        <!-- Sürgülü Girişler -->
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <span class="selector-label">Yaş:</span>
+                                <span class="slider-val" id="calc-age-val">25</span>
+                            </div>
+                            <input type="range" id="calc-age" min="18" max="80" value="25" class="calc-slider">
                         </div>
 
-                        <p class="simulator-desc" id="strictness-desc">
-                            Bilimsel sürelere ve standart yoğunluğa sadık kalınır. Hedef kalori dengeli uygulanır.
-                        </p>
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <span class="selector-label">Boy:</span>
+                                <span class="slider-val" id="calc-height-val">175 cm</span>
+                            </div>
+                            <input type="range" id="calc-height" min="130" max="220" value="175" class="calc-slider">
+                        </div>
+
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <span class="selector-label">Kilo:</span>
+                                <span class="slider-val" id="calc-weight-val">70 kg</span>
+                            </div>
+                            <input type="range" id="calc-weight" min="40" max="150" value="70" class="calc-slider">
+                        </div>
                     </div>
 
-                    <!-- Simülasyon Sonuç Paneli (Holografik Radar Grafik Ekranı) -->
+                    <!-- Analiz Sonuç Paneli (Holografik Ekran) -->
                     <div class="simulator-display">
-                        <h3 class="display-title">Biyometrik Denge Simülasyonu</h3>
+                        <h3 class="display-title">Biyometrik Analiz Raporu</h3>
                         
-                        <div class="chart-container">
-                            <canvas id="biomarkerChart"></canvas>
+                        <div class="report-metrics">
+                            <div class="report-card">
+                                <div class="report-icon-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                </div>
+                                <div class="report-info">
+                                    <span class="report-label">Bazal Metabolizma (BMR)</span>
+                                    <span class="report-value" id="result-bmr">1683 kcal</span>
+                                </div>
+                            </div>
+
+                            <div class="report-card">
+                                <div class="report-icon-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2979FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                </div>
+                                <div class="report-info">
+                                    <span class="report-label">Günlük Su İhtiyacı</span>
+                                    <span class="report-value" id="result-water">2.3 Litre</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="display-status-box">
+                            <span class="status-indicator-dot"></span>
+                            <span class="status-text" id="result-status">Dengeli Metabolizma</span>
                         </div>
 
                         <div class="display-footer">
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
-                            <span>Biyobelirteç dalgalanmaları ve toparlanma oranları 70kg ağırlığındaki bir bireyin biyolojik profiline göredir.</span>
+                            <span>Hesaplamalar Mifflin-St Jeor denklemi ve hidrasyon standartları esas alınarak yapılmıştır.</span>
                         </div>
                     </div>
                 </div>

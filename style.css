@@ -35,6 +35,11 @@
     scroll-behavior: smooth;
 }
 
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 body {
     background-color: var(--bg-obsidian);
     background-image: 
@@ -43,7 +48,6 @@ body {
     color: var(--text-primary);
     font-family: var(--font-body);
     line-height: 1.6;
-    overflow-x: hidden;
     position: relative;
 }
 
@@ -1669,6 +1673,26 @@ a {
         padding: 24px;
     }
 
+    .biomarker-adjuster {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .adjust-arrow {
+        transform: rotate(90deg);
+        margin: 4px 0;
+    }
+
+    .watch-sync-ui {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 10px 0;
+    }
+
+    .sync-pulse-line {
+        width: 40px;
+    }
+
     .feature-card-title {
         font-size: 20px;
     }
@@ -1702,3 +1726,153 @@ a {
         text-align: center;
     }
 }
+
+/* ─── BİYOMETRİK HESAPLAYICI SİMÜLATÖR STİLLERİ ────────── */
+.calc-group {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.slider-group {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slider-val {
+    font-family: var(--font-technical);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.calc-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.06);
+    outline: none;
+    transition: background 0.3s;
+}
+
+.calc-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    border: 2px solid #FFFFFF;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(13, 148, 136, 0.5);
+    transition: transform 0.2s;
+}
+
+.calc-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+.calc-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    border: 2px solid #FFFFFF;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(13, 148, 136, 0.5);
+    transition: transform 0.2s;
+}
+
+.calc-slider::-moz-range-thumb:hover {
+    transform: scale(1.15);
+}
+
+/* Rapor metrikleri */
+.report-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.report-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background-color: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.report-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.report-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.report-label {
+    font-family: var(--font-technical);
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.report-value {
+    font-family: var(--font-technical);
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.display-status-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    width: max-content;
+    margin-top: 10px;
+}
+
+.status-indicator-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #00E5FF;
+    box-shadow: 0 0 8px #00E5FF;
+    animation: pulseGlow 1.5s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+

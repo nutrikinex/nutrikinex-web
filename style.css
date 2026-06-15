@@ -1725,6 +1725,72 @@ a {
         gap: 20px;
         text-align: center;
     }
+
+    /* Yatay kartların mobil ekranlara sığması ve taşma yapmaması için iyileştirmeler */
+    .card-outer {
+        padding: 4px;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .card-inner {
+        padding: 20px;
+        border-radius: 16px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .disclaimer-card {
+        padding: 4px;
+        border-radius: 16px;
+        margin-bottom: 40px;
+        width: 100%;
+    }
+
+    .disclaimer-banner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+        padding: 16px !important;
+        border-radius: 12px !important;
+        width: 100%;
+    }
+
+    .disclaimer-icon {
+        margin-top: 0;
+    }
+
+    /* FAQ ve Rapor kartlarının mobil ekranlara tam uyumu için ek düzeltmeler */
+    .faq-trigger {
+        padding: 16px 20px;
+        font-size: 14px;
+    }
+
+    .faq-content {
+        padding: 0 20px;
+    }
+
+    .faq-content p {
+        padding-bottom: 16px;
+        font-size: 13px;
+    }
+
+    .report-card {
+        padding: 12px 14px;
+        gap: 12px;
+    }
+
+    .report-icon-box {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+    }
+
+    .report-value {
+        font-size: 16px;
+    }
 }
 
 /* ─── BİYOMETRİK HESAPLAYICI SİMÜLATÖR STİLLERİ ────────── */
@@ -1875,4 +1941,104 @@ a {
     0% { opacity: 0.5; }
     100% { opacity: 1; }
 }
+
+/* -------------------------------------------------------------
+   Mobil (max‑width: 600px) – Yatay kartların tek sütun hâli
+   ------------------------------------------------------------- */
+@media screen and (max-width: 600px) {
+  /* Kartların kapsayıcısı */
+  .features-grid,
+  .card-outer,
+  .card-inner,
+  .bento-workout-card,
+  .bento-diet-card,
+  .bento-watch-card,
+  .bento-satisfaction-card,
+  .bento-recovery-card {
+    display: block !important;           /* satır içinde yerleşme engellenir */
+    width: 100% !important;              /* tam genişlik */
+    max-width: none !important;
+  }
+
+  /* Tek satırda birden fazla kart varsa “grid” yapısını sıfırla */
+  .features-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  /* Kartın dış çerçevesi */
+  .card-outer {
+    margin: 0 auto;
+    border-radius: 24px;
+    padding: 8px;
+    background: rgba(255,255,255,0.012);
+    box-shadow: 0 12px 24px -8px rgba(0,0,0,0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card-outer:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 36px -8px rgba(0,0,0,0.6);
+  }
+
+  .card-inner {
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  /* Flotante kartlar (hero üzerindeki “floating‑card” öğeleri) */
+  .floating-card {
+    position: static;      /* akış içinde */
+    margin: 0 auto;       /* merkeze ortala */
+    width: 90%;
+    transform: none;
+  }
+
+  /* Hero bölümündeki butonlar */
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .hero-actions .btn-pill {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Mockup görseli */
+  .mockup-outer {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  /* İçerik font boyutları – daha rahat okuma */
+  .hero-title { font-size: 32px; }
+  .hero-subtitle { font-size: 14px; }
+  .section-title { font-size: 28px; }
+  .section-subtitle { font-size: 13px; }
+
+
+  }
+
+  .bento-wide-card {
+    grid-column: span 1 !important;
+  }
+
+  .card-inner {
+    padding: 20px !important;
+  }
+
+  .feature-card-title,
+  .feature-card-desc,
+  .star-rating,
+  .satisfaction-quote {
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+  }
+}
+
+
 
